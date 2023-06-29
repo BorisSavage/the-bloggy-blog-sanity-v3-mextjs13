@@ -1,8 +1,5 @@
 import { PlayCircleIcon } from "@heroicons/react/24/outline";
 import { defineField, defineType } from "sanity";
-import { getFileAsset } from "@sanity/asset-utils";
-import { Flex, Spinner } from "@sanity/ui";
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
 
 export default defineType({
   name: "videoAnimation",

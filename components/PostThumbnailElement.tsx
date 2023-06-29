@@ -18,14 +18,16 @@ export default function PostThumbnailElement({
     <Link href={route}>
       <div className="group relative flex cursor-pointer flex-col">
         <div className="relative h-80 w-full overflow-hidden drop-shadow-xl transition-transform duration-[500ms] ease-savage_sig group-hover:-translate-y-2">
-          <Image
-            priority={isFirst}
-            className="object-cover object-center"
-            src={post?.mainImage ? urlFor(post?.mainImage).url() : ""}
-            alt={post?.author?.name}
-            fill
-            sizes="(max-width: 768px) 88vw, (max-width: 1280px) 46vw, 580px"
-          />
+          {post?.mainImage && (
+            <Image
+              priority={isFirst}
+              className="object-cover object-center"
+              src={urlFor(post?.mainImage).url()}
+              alt={post?.author?.name}
+              fill
+              sizes="(max-width: 768px) 88vw, (max-width: 1280px) 46vw, 580px"
+            />
+          )}
 
           <div className="absolute bottom-0 left-0 right-0 flex h-fit min-h-[122px] flex-col justify-end rounded-t bg-black/20 backdrop-blur gradient-mask-t-40">
             <div className="flex w-full justify-between rounded px-5 pb-2 text-white drop-shadow-lg">

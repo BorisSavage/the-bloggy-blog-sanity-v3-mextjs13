@@ -8,11 +8,12 @@ import VideoAnimationComponent from "./VideoAnimationComponent";
 export const RichTextComponents = {
   types: {
     image: ({ value }: { value: mainImage }) => {
+      if (!value) return;
       return (
         <div className="relative mx-auto my-2 aspect-square w-full border sm:my-3.5 sm:aspect-[16/9]">
           <Image
             className="object-scale-down"
-            src={value ? urlFor(value).url() : ""}
+            src={urlFor(value).url()}
             alt="Blog Post Image"
             fill
           />

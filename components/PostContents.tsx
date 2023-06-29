@@ -9,13 +9,15 @@ export default function PostContents({ post }: { post: Post }) {
       <section className="mb-2 space-y-2 border border-teal-700 text-white sm:mb-3.5">
         <div className="min-h-56 relative flex flex-col justify-between sm:flex-row">
           <div className="absolute top-0 h-full w-full p-10 opacity-20 blur-sm">
-            <Image
-              className="mx-auto object-cover"
-              src={post?.mainImage ? urlFor(post?.mainImage).url() : ""}
-              alt={post?.title || "Main image"}
-              fill
-              priority
-            />
+            {post?.mainImage && (
+              <Image
+                className="mx-auto object-cover"
+                src={urlFor(post?.mainImage).url()}
+                alt={post?.title || "Main image"}
+                fill
+                priority
+              />
+            )}
           </div>
 
           <section className="w-full bg-teal-700 p-5">
@@ -34,13 +36,15 @@ export default function PostContents({ post }: { post: Post }) {
               </div>
               <div className="flex w-fit items-center space-x-2">
                 <div className="relative flex h-10 w-10 flex-shrink-0 items-center rounded-full border">
-                  <Image
-                    className="rounded-full object-cover drop-shadow"
-                    src={urlFor(post?.author?.image)?.url()}
-                    alt={post?.author?.name}
-                    fill
-                    sizes="100%"
-                  />
+                  {post?.author?.image && (
+                    <Image
+                      className="rounded-full object-cover drop-shadow"
+                      src={urlFor(post.author.image).url()}
+                      alt={post?.author?.name}
+                      fill
+                      sizes="100%"
+                    />
+                  )}
                 </div>
 
                 <div className="w-40">

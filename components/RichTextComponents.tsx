@@ -58,7 +58,7 @@ export const RichTextComponents = {
     ),
 
     normal: ({ children = [] }: { children?: ReactNode }) => (
-      <div className="border py-2 text-justify text-lg sm:py-3.5 sm:text-xl">
+      <div className="py-2 text-justify text-lg sm:py-3.5 sm:text-xl">
         {children}
       </div>
     ),

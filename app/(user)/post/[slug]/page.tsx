@@ -5,7 +5,7 @@ import { draftMode } from "next/headers";
 import PreviewProvider from "@/components/PreviewProvider";
 import PreviewPostContents from "@/components/PreviewPostContents";
 
-export const revalidate = 60; // default value, feel free to reduce this but watch out for your Sanity.io quota
+export const revalidate = 300; // default value, feel free to reduce this but watch out for your Sanity.io quota
 
 export async function generateStaticParams() {
   const query = groq`
@@ -39,16 +39,17 @@ export default async function Post({
       categories[]->
     }
   `;
+  const client = getClient({});
 
-  const { isEnabled } = draftMode();
+  const preview = draftMode().isEnabled
+    ? { token: process.env.SANITY_API_READ_TOKEN }
+    : undefined;
 
-  const post: Post = await getClient({ preview: isEnabled }).fetch(query, {
-    slug,
-  });
+  const post: Post = await client.fetch(query, { slug });
 
-  if (isEnabled) {
+  if (preview?.token) {
     return (
-      <PreviewProvider preview={isEnabled}>
+      <PreviewProvider token={preview.token}>
         <PreviewPostContents query={query} slug={slug} data={post} />
       </PreviewProvider>
     );

@@ -8,9 +8,9 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between space-x-2 px-10 py-5 font-bold">
       <div>
-        <Link href="/" className="flex items-center space-x-2">
-          <FireIcon className="h-12 w-12 text-cyan-700" />
-          <h1>Bloggy Blog</h1>
+        <Link href="/studio" className="flex items-center space-x-2">
+          <FireIcon className="h-12 w-12 text-teal-700" />
+          <h1>Bloggy Blog Studio</h1>
         </Link>
       </div>
       <DraftModeToggle isDraftEnabled={isEnabled} />

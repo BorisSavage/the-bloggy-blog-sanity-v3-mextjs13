@@ -1,26 +1,26 @@
 import { buildLegacyTheme } from "sanity";
 
 const props = {
-  "--almost-white": "#ecfeff",
-  "--almost-black": "#0f172a",
-  "--bloggy-brand": "#67e8f9",
+  "--almost-white": "#f0fdfa",
+  "--almost-black": "#131c1c",
+  "--bloggy-brand": "#5eead4",
   "--my-red": "#872b23",
-  "--my-yellow": "#e8e03f",
-  "--my-green": "#1bc423",
+  "--my-yellow": "#fff645",
+  "--my-green": "#24ff2f",
 };
 
 export const myTheme = buildLegacyTheme({
   /* Base theme colors */
   "--black": props["--almost-black"],
   "--white": props["--almost-white"],
-  "--gray": "#777",
-  "--gray-base": "#777",
+  "--gray": "#888",
+  "--gray-base": "#888",
   "--component-bg": props["--almost-black"],
   "--component-text-color": props["--almost-white"],
   /* Brand */
   "--brand-primary": props["--bloggy-brand"],
   // Default button
-  "--default-button-color": "#777",
+  "--default-button-color": "#888",
   "--default-button-primary-color": props["--bloggy-brand"],
   "--default-button-success-color": props["--my-green"],
   "--default-button-warning-color": props["--my-yellow"],

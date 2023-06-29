@@ -5,7 +5,7 @@ import { groq } from "next-sanity";
 import { draftMode } from "next/headers";
 import PreviewProvider from "@/components/PreviewProvider";
 
-export const revalidate = 60; // default value, feel free to reduce this but watch out for your Sanity.io quota
+export const revalidate = 300; // default value, feel free to reduce this but watch out for your Sanity.io quota
 
 export default async function Home() {
   const query = groq`
@@ -13,14 +13,20 @@ export default async function Home() {
     ...,
     author->,
     categories[]->
-  } | order(_createdAt desc)
+  } | order(publishedAt desc)
   `;
 
-  const { isEnabled } = draftMode();
-  const posts: Post[] = await getClient({ preview: isEnabled }).fetch(query);
-  if (isEnabled) {
+  const preview = draftMode().isEnabled
+    ? { token: process.env.SANITY_API_READ_TOKEN }
+    : undefined;
+
+  const client = getClient({});
+
+  const posts: Post[] = await client.fetch(query);
+
+  if (preview?.token) {
     return (
-      <PreviewProvider preview={isEnabled}>
+      <PreviewProvider token={preview.token}>
         <PreviewBlogList query={query} data={posts} />
       </PreviewProvider>
     );

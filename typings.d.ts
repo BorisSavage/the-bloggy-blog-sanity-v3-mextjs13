@@ -14,6 +14,7 @@ interface Post extends Base {
   slug: Slug;
   title: string;
   description: string;
+  publishedAt: string;
 }
 
 interface Author extends Base {
@@ -43,7 +44,7 @@ interface Block {
   _type: "block";
   children: Span[];
   markDefs: any[];
-  style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+  style: "normal" | "small" | "h1" | "h2" | "h3" | "h4" | "blockquote";
 }
 
 interface Span {
@@ -61,6 +62,12 @@ interface Category extends Base {
 interface mainImage {
   _type: "image";
   asset: Reference;
+}
+interface video {
+  _type: "videoAnimation";
+  asset: Reference;
+  webm: file;
+  fallback: file;
 }
 
 interface Title {

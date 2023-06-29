@@ -6,11 +6,11 @@ import { getClient } from "@/lib/sanity.client";
 
 export default function PreviewProvider({
   children,
-  preview,
+  token,
 }: {
   children: React.ReactNode;
-  preview: boolean;
+  token: string;
 }) {
-  const client = useMemo(() => getClient({ preview }), []);
+  const client = useMemo(() => getClient({ preview: { token } }), [token]);
   return <LiveQueryProvider client={client}>{children}</LiveQueryProvider>;
 }

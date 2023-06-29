@@ -4,15 +4,17 @@ import { useLiveQuery } from "next-sanity/preview";
 import PostContents from "./PostContents";
 import { CogIcon } from "@heroicons/react/24/outline";
 
+type Props = {
+  data: Post;
+  query: string;
+  slug: string;
+};
+
 export default function PreviewPostContents({
   data: initialData,
   query,
   slug,
-}: {
-  data: Post;
-  query: string;
-  slug: string;
-}) {
+}: Props) {
   const [data, loading] = useLiveQuery(initialData, query, {
     slug,
   });
@@ -21,7 +23,7 @@ export default function PreviewPostContents({
     return (
       <div
         role="status"
-        className="mx-auto flex items-center justify-center space-x-2 text-cyan-700"
+        className="mx-auto flex items-center justify-center space-x-2 text-teal-700"
       >
         <div className="flex h-10 items-center">
           <p className="text-center text-lg font-bold">

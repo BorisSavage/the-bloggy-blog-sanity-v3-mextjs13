@@ -32,7 +32,7 @@ export default function PostThumbnailElement({
               <div className="drop-shadow">
                 <p className="line-clamp-1 font-bold">{post?.title}</p>
                 <p>
-                  {new Date(post?._createdAt).toLocaleDateString("en-US", {
+                  {new Date(post?.publishedAt).toLocaleDateString("en-US", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
@@ -43,11 +43,11 @@ export default function PostThumbnailElement({
           </div>
         </div>
 
-        <div className="relative mt-2 flex flex-row items-center justify-center gap-x-2 gap-y-2 px-2 md:justify-end">
+        <div className="relative mt-2 flex flex-row items-center justify-center gap-x-2 gap-y-2 px-2 sm:justify-end">
           {post?.categories?.map((category) => (
             <div
               key={category?._id}
-              className="rounded-full bg-teal-700/50 px-2 py-0.5 text-center text-sm font-medium text-white shadow shadow-teal-700/50"
+              className="rounded-full bg-teal-700 px-2 py-0.5 text-center text-xs font-medium text-white outline outline-1 outline-teal-900/20 sm:text-sm"
             >
               <p className="drop-shadow">{category?.title}</p>
             </div>
@@ -58,7 +58,7 @@ export default function PostThumbnailElement({
           <p className="text-lg font-bold underline">{post?.title}</p>
           <p className="text-gray-500">{post?.description}</p>
         </div>
-        <p className="mt-2 flex items-center font-bold underline decoration-teal-300/0 decoration-4 transition-all duration-500 ease-savage_sig group-hover:decoration-teal-300/100">
+        <p className="mt-2 flex items-center font-bold underline decoration-black/0 decoration-2 transition-all duration-500 ease-savage_sig group-hover:decoration-teal-500/100">
           Read Post
           <ArrowUpRightIcon className="ml-2 h-4 w-4" />
         </p>

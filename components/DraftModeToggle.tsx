@@ -2,7 +2,7 @@
 
 import { CogIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function DraftModeToggle({
   isDraftEnabled,
@@ -12,7 +12,7 @@ export default function DraftModeToggle({
   const [draftEnabled] = useState(isDraftEnabled);
   const [isActive, setIsActive] = useState(false);
   return (
-    <div className="group relative flex items-center text-center text-sm text-cyan-700 md:text-base">
+    <div className="group relative flex items-center text-center text-sm text-teal-700 sm:text-base">
       <div
         className={`absolute -inset-0 animate-slight_tilt
         rounded-full bg-gradient-to-r from-lime-700 via-teal-700 to-violet-700 opacity-20 blur-sm transition duration-500 ease-savage_sig ${
@@ -29,7 +29,9 @@ export default function DraftModeToggle({
       >
         <div className="flex h-6 items-center">
           <div>
-            {!draftEnabled ? "Enable Blog Preview" : "Disable Blog Preview"}
+            {!draftEnabled
+              ? `Enabl${!isActive ? "e" : "ing"} Live Preview`
+              : `Disabl${!isActive ? "e" : "ing"} Live Preview`}
             {isActive && "..."}
           </div>
         </div>
